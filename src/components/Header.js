@@ -20,6 +20,7 @@ const Header = () => {
                 Create Job
                 </NavLink>
                 <div className="divider"> | </div>
+                <div className="divider"> | </div>
                 <NavLink to="/search" className="header-link">Search</NavLink>
             </>
         )}

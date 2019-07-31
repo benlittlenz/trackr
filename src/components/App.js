@@ -9,6 +9,8 @@ import ForgotPassword from './Auth/ForgotPassword';
 import Login from './Auth/Login';
 
 import CreateJob from './Link/CreateJob';
+import JobList from './Link/JobList';
+import JobDetail from './Link/JobDetail';
 
 const App = () => {
     const user = useAuth()
@@ -23,6 +25,9 @@ const App = () => {
                         <Route path="/login" component={Login}/>
                         <Route path="/forgot" component={ForgotPassword}/>
                         <Route path="/create" component={CreateJob}/>
+                        <Route path="/jobs" component={JobList}/>
+                        <Route path="/job/:page" component={JobList}/>
+                        <Route path="/job/:jobId" component={JobDetail}/>
                     </Switch>
                 </div>
             </div>
