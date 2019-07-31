@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import useFormValidation from '../Auth/useFormValidation';
-import validateCreateLink from '../Auth/validateCreateLink';
+import validateCreateJob from '../Auth/validateCreateJob';
 
 import FirebaseContext from '../../firebase/context';
 
@@ -14,7 +14,7 @@ const CreateJob = props => {
   const { firebase, user } = useContext(FirebaseContext);
   const { handleSubmit, handleChange, values, errors } = useFormValidation(
     INITAL_STATE, 
-    validateCreateLink, 
+    validateCreateJob, 
     handleCreateJob
   )
 
@@ -31,7 +31,6 @@ const CreateJob = props => {
           id: user.uid,
           name: user.displayName
         },
-        comments: [],
         created: Date.now()
       }
       firebase.db.collection('job').add(newJob);
@@ -44,6 +43,26 @@ const CreateJob = props => {
     >
     <input 
         onChange={handleChange}
+        value={values.companyName}
+        name="companyName"
+        placeholder="Company Name"
+        autoComplete="off"
+        type="text"
+        className={errors.companyName && 'error-input'}
+    />
+    {errors.companyName && <p className="error-text">{errors.companyName}</p>}
+    <input 
+        onChange={handleChange}
+        value={values.job}
+        name="job"
+        placeholder="description for your job"
+        autoComplete="off"
+        type="text"
+        className={errors.job && 'error-input'}
+    />
+    {errors.job && <p className="error-text">{errors.job}</p>}
+    <input 
+        onChange={handleChange}
         value={values.description}
         name="description"
         placeholder="description for your link"
@@ -51,26 +70,7 @@ const CreateJob = props => {
         type="text"
         className={errors.description && 'error-input'}
     />
-    <input 
-    onChange={handleChange}
-    value={values.description}
-    name="description"
-    placeholder="description for your link"
-    autoComplete="off"
-    type="text"
-    className={errors.description && 'error-input'}
-    />
     {errors.description && <p className="error-text">{errors.description}</p>}
-    <input 
-    onChange={handleChange}
-    value={values.url}
-    name="url"
-    placeholder="url for your link"
-    autoComplete="off"
-    type="url"
-    className={errors.url && 'error-input'}
-    />
-      {errors.url && <p className="error-text">{errors.url}</p>}
       <button
         onClick={handleSubmit}
         className="button"

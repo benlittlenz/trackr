@@ -12,11 +12,11 @@ const Header = () => {
         </NavLink>
         {user && ( 
             <>
-                <NavLink to="/new" className="header-link">
+                <NavLink to="/jobs" className="header-link">
                     Jobs
                 </NavLink>
                 <div className="divider"> | </div>
-                <NavLink to="/new" className="header-link">
+                <NavLink to="/create" className="header-link">
                 Create Job
                 </NavLink>
                 <div className="divider"> | </div>

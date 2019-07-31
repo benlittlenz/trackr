@@ -8,6 +8,8 @@ import Header from './Header';
 import ForgotPassword from './Auth/ForgotPassword';
 import Login from './Auth/Login';
 
+import CreateJob from './Link/CreateJob';
+
 const App = () => {
     const user = useAuth()
     return (
@@ -20,6 +22,7 @@ const App = () => {
                         {/* <Route exact path="/" /> */}
                         <Route path="/login" component={Login}/>
                         <Route path="/forgot" component={ForgotPassword}/>
+                        <Route path="/create" component={CreateJob}/>
                     </Switch>
                 </div>
             </div>
