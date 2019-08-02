@@ -5,7 +5,7 @@ import JobItem from './JobItem';
 const JobList = ({ location }) => {
   const { firebase } = useContext(FirebaseContext);
   const [jobs, setJobs] = useState([]);
-  // const isNewPage = location.pathname.includes('new');
+  const isNewPage = location.pathname.includes('new');
 
   useEffect(() => {
     getJobs()
@@ -28,11 +28,11 @@ const JobList = ({ location }) => {
     setJobs(jobs);
   }
 
-  // function renderJobs() {
-  //   if(isNewPage) {
-  //     return jobs
-  //   }
-  // }
+  function renderJobs() {
+    if(isNewPage) {
+      return jobs
+    }
+  }
 
   return (
     <div>

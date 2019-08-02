@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import FirebaseContext from '../../firebase/context';
+import { Label } from 'semantic-ui-react'
 
 const JobItem = ({ job, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
@@ -12,6 +13,10 @@ const JobItem = ({ job, index, showCount, history }) => {
         jobRef.delete().then(console.log(job.id))
     }
 
+    // function getDomain(url) {
+    //     return url.replace(/^https?:\/\//i, "");
+    // }
+    console.log(job)
     const postedByAuthUser = user && user.uid === job.createdBy.id
 
     return (
@@ -20,6 +25,9 @@ const JobItem = ({ job, index, showCount, history }) => {
                 { showCount && (
                     <span className="gray">{index}.</span>
                 )}
+                <Label as='a' color='red' tag>
+                    New Job
+                </Label>
             </div>
             <div className="ml1">
                 <div>
@@ -29,6 +37,9 @@ const JobItem = ({ job, index, showCount, history }) => {
                 <div className="f6 lh-copy gray">
                     {job.createdBy.name} {distanceInWordsToNow(job.created)}
                     { " | "}
+                    <Link to={`/job/${job.id}`}>
+                        View   
+                    </Link>
                     {postedByAuthUser && (
                         <>
                             { " | "}
