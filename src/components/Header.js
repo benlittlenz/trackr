@@ -56,6 +56,9 @@ const Header = () => {
 
         <Menu.Item>
           <Menu.Header>Account</Menu.Header>
+          {user && (
+            <p>Signed in as {user.displayName}</p>
+          )}
             <Menu.Menu>
               {user ? (
                 <Menu.Item 

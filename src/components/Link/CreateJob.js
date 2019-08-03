@@ -25,9 +25,10 @@ const CreateJob = props => {
     if(!user) {
       props.history.push('/login');
     } else {
-      const { companyName, job, description } = values;
+      const { companyName, orderId, job, description } = values;
       const newJob = {
         companyName,
+        orderId,
         job,
         description,
         createdBy: {
@@ -53,7 +54,14 @@ const CreateJob = props => {
           value={values.companyName}
           name='companyName' 
           control='input' 
-          placeholder='Company Name' 
+          placeholder='Company Name'  
+        />
+        <Form.Field
+          onChange={handleChange}
+          value={values.orderId}
+          name='orderId' 
+          control='input' 
+          placeholder='Order reference' 
           
           
         />
@@ -76,6 +84,16 @@ const CreateJob = props => {
           placeholder="description for job"
           control='input' 
         />
+        <Form.Field
+          onChange={handleChange}
+          value={values.job}
+          name="job"
+          control='select' 
+          placeholder='Job'>
+            <option value=''></option>
+            <option value='Required'>Face Fix</option>
+            <option value='Not Required'>Surface Mount</option>
+        </Form.Field>
         {errors.description && <p className="error-text">{errors.description}</p>}
         <Button
           onClick={handleSubmit}
@@ -91,33 +109,3 @@ const CreateJob = props => {
 }
 
 export default CreateJob;
-
-    // {/* <input 
-    //     onChange={handleChange}
-    //     value={values.companyName}
-    //     name="companyName"
-    //     placeholder="Company Name"
-    //     autoComplete="off"
-    //     type="text"
-    //     className={errors.companyName && 'error-input'}
-    // /> */}
-    // {errors.companyName && <p className="error-text">{errors.companyName}</p>}
-    // <input 
-    //     onChange={handleChange}
-    //     value={values.job}
-    //     name="job"
-    //     placeholder="description for your job"
-    //     autoComplete="off"
-    //     type="text"
-    //     className={errors.job && 'error-input'}
-    // />
-    // {errors.job && <p className="error-text">{errors.job}</p>}
-    // <input 
-    //     onChange={handleChange}
-    //     value={values.description}
-    //     name="description"
-    //     placeholder="description for your link"
-    //     autoComplete="off"
-    //     type="text"
-    //     className={errors.description && 'error-input'}
-    // />

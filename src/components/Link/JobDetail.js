@@ -31,11 +31,17 @@ const JobDetail = props => {
     <div>Loading...</div>
   ) : (
     <div>
-      <JobItem 
+      {/* <JobItem 
         showCount={false}
         job={job}
-      />
-      <h1>{job.companyName}</h1>
+      /> */}
+      <span>
+        <h1>Company Name: {job.companyName}</h1>
+        <h1>Order Reference: {job.orderId}</h1>  
+      </span>
+      
+      <h2>Job Type: {job.job}</h2>
+      <p>{job.description}</p>
     </div>
   )
 }

@@ -7,7 +7,7 @@ const validateCreateLink = values => {
 
     if(!values.job) errors.job = 'Company Name required'
 
-    if(!values.description) errors.description = 'Email required'
+    if(!values.description) errors.description = 'Description required'
     else if(values.description.length < 10) {
         errors.description = 'Description must be at least 10 characters'
     }
